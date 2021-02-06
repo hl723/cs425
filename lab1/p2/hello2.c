@@ -29,20 +29,21 @@ struct kobj_attribute sysfs_double_me = __ATTR(double_me, 0660, show_double_me, 
 // show and store functions 
 static ssize_t show_enable_logging(struct kobject *kobj, struct kobj_attribute *attr, char *buf)
 {
-    printk("Reading in sysfs show function.\n");
+    // printk("Reading in sysfs show function.\n");
     return sprintf(buf, "%d", enable_logging);
 }
 
 static ssize_t store_enable_logging(struct kobject *kobj, struct kobj_attribute *attr, const char *buf, size_t count)
 {
     sscanf(buf, "%d", &enable_logging);
-    printk("Writing in sysfs store function %d\n", enable_logging);
+    // printk("Writing in sysfs store function %d\n", enable_logging);
     return count;
 }
 
 static ssize_t show_double_me(struct kobject *kobj, struct kobj_attribute *attr, char *buf)
 {
-    printk("Reading in sysfs show function.\n");
+    if (enable_logging)
+        printk("Reading in sysfs show function.\n");
     return sprintf(buf, "%d", double_me);
 }
 
