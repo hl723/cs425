@@ -1,1 +1,0 @@
-cmd_/home/mine/courses/cs425/lab1/p2/hello2.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000  --build-id  -T ./scripts/module-common.lds -o /home/mine/courses/cs425/lab1/p2/hello2.ko /home/mine/courses/cs425/lab1/p2/hello2.o /home/mine/courses/cs425/lab1/p2/hello2.mod.o;  true
