@@ -7,11 +7,11 @@ MODULE_DESCRIPTION("Hello world in a kernel module.");
 MODULE_LICENSE("GPL");
 
 static int __init mod_init (void) {
-    printk("Hello, World!\n");
+    printk(KERN_INFO "Hello, World!\n");
     return 0;
 }
 static void __exit mod_exit (void) {
-    printk("Goodbye, World!\n");
+    printk(KERN_INFO "Goodbye, World!\n");
 }
 
 module_init(mod_init);
