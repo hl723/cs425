@@ -1,0 +1,4 @@
+My Github repository is at:
+https://github.com/hl723/cs425
+
+Source files are located in lab1/p*/hello*.c
