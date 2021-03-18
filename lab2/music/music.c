@@ -392,11 +392,12 @@ void EXTI0_IRQHandler(void)
 {
     // Check if the interrupt came from exti0
     if (EXTI->PR & (1 << 0)){
+        int k;
+        for (k = 0; k < wait_time; k++); // result of experimentation
+
         // Clear pending bit
         EXTI->PR = (1 << 0);
 
-        int k;
-        for (k = 0; k < wait_time*3; k++); // result of experimentation
         for (k = 0; k < wait_time; k++)
         {
             if (EXTI->PR & (1 << 0)){
