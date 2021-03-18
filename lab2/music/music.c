@@ -49,6 +49,7 @@ static int music0_len = 30, music1_len = 7;
 static int sample = 0;
 static int speed0 = 1, speed1 = 1;
 static int wait_time = 1000000;
+static int paused = 0;
 
 static int curr_music = 0;
 // ode to joy
@@ -395,19 +396,20 @@ void EXTI0_IRQHandler(void)
         EXTI->PR = (1 << 0);
 
         int k;
-        for (k = 0; k < wait_time; k++);
+        for (k = 0; k < wait_time*3; k++); // result of experimentation
         for (k = 0; k < wait_time; k++)
         {
             if (EXTI->PR & (1 << 0)){
                 RCC->APB1ENR ^= (1 << 2); // pause/resume tim4
                 RCC->APB1ENR ^= (1 << 0); // pause/resume tim2
+                paused = (paused) ? 0 : 1;
                 // Clear pending bit
                 EXTI->PR = (1 << 0);
                 break;
             }
             
         }
-        if (k == wait_time) 
+        if (k == wait_time && !paused) 
         {
             curr_music = (curr_music == 1) ? 0 : 1;
             int speed = (curr_music == 1) ? speed1 : speed0;
