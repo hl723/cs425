@@ -1,0 +1,31 @@
+# [workspace]
+# members = ["kernel", "flashBlue"]
+
+[package]
+name = "emb-rust"
+version = "0.1.0"
+authors = ["Hao"]
+edition = "2018"
+
+[[bin]]
+name = "flash_blue"
+path = "src/flash_blue.rs"
+
+[[bin]]
+name = "flash_green"
+path = "src/flash_green.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+stm32f407g-disc = "0.4.0"
+cortex-m = "0.5.8"
+cortex-m-rt = "0.6"
+# Panic behaviour, see https://crates.io/keywords/panic-impl for alternatives
+panic-halt = "0.2"
+alloc-cortex-m = "0.4.1"
+
+[dependencies.object]
+version = "0.24.0"
+default-features = false
+features = ["read_core", "elf"]

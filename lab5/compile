@@ -1,0 +1,7 @@
+cargo build --bin flash_blue
+cp target/thumbv7em-none-eabi/debug/flash_blue src/flash_blue
+arm-none-eabi-objcopy --strip-debug src/flash_blue
+
+cargo build --bin flash_green
+cp target/thumbv7em-none-eabi/debug/flash_green src/flash_green
+arm-none-eabi-objcopy --strip-debug src/flash_green
